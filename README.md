@@ -36,7 +36,7 @@ This project asks:
 
 ## Dataset
 
-We used the **CyNER 2.0** dataset from Hugging Face. The dataset contains **7,751 documents** from cybersecurity threat reports and includes **5 entity types**. :contentReference[oaicite:3]{index=3}
+We used the **CyNER 2.0** dataset from Hugging Face. The dataset contains **7,751 documents** from cybersecurity threat reports and includes **5 entity types**.
 
 ### Entity Types
 - **Malware** — named malicious software or tool
@@ -54,7 +54,7 @@ We first applied a general-domain pretrained model:
 
 - `dslim/bert-base-NER`
 
-The purpose of this step was to establish a baseline and show how poorly a general NER model transfers to cybersecurity text. The baseline produced near-zero F1 scores across most entities and frequently confused cybersecurity entities with incorrect general-domain labels. :contentReference[oaicite:4]{index=4}
+The purpose of this step was to establish a baseline and show how poorly a general NER model transfers to cybersecurity text. The baseline produced near-zero F1 scores across most entities and frequently confused cybersecurity entities with incorrect general-domain labels.
 
 ### 2. Annotation Guidelines
 We created and revised annotation guidelines to define the five cybersecurity entity types more clearly.
@@ -62,7 +62,7 @@ We created and revised annotation guidelines to define the five cybersecurity en
 - **Annotation Guidelines v1.0** — initial rules before annotation
 - **Annotation Guidelines v1.1** — refined rules after Batch 1 disagreement analysis
 
-The guideline revisions were especially important for ambiguous entity types such as **Indicator, System, and Organization**. :contentReference[oaicite:5]{index=5} :contentReference[oaicite:6]{index=6}
+The guideline revisions were especially important for ambiguous entity types such as **Indicator, System, and Organization**.
 
 ### 3. Annotation Batches
 The annotation process was completed in three stages:
@@ -71,14 +71,14 @@ The annotation process was completed in three stages:
 - **Batch 2** — larger annotation round with split work and overlap for consistency checks
 - **Batch 3** — Model 1 pre-annotated new documents, which were then manually corrected
 
-This design followed the assignment’s iterative annotation workflow of shared annotation, agreement review, refinement, and model-assisted correction. :contentReference[oaicite:7]{index=7}
+This design followed the assignment’s iterative annotation workflow of shared annotation, agreement review, refinement, and model-assisted correction.
 
 ### 4. Inter-Annotator Agreement
 We measured annotation consistency using:
 - **Cohen’s Kappa**
 - **Entity-level F1**
 
-Batch 1 revealed that **Malware** was already strong, while **Indicator, System, and Organization** had weak agreement. After revising the guidelines, Batch 2 agreement improved substantially. :contentReference[oaicite:8]{index=8}
+Batch 1 revealed that **Malware** was already strong, while **Indicator, System, and Organization** had weak agreement. After revising the guidelines, Batch 2 agreement improved substantially. 
 
 ### 5. Custom Model Training
 We trained two custom model stages:
@@ -112,7 +112,7 @@ To test generalization, we applied the cybersecurity-trained model to Twitter te
 ## Key Results
 
 ### Pretrained Baseline
-The pretrained baseline performed very poorly on the cybersecurity dataset. It produced near-zero F1 scores across the five entity types and often misclassified cybersecurity entities into the wrong label categories. :contentReference[oaicite:9]{index=9}
+The pretrained baseline performed very poorly on the cybersecurity dataset. It produced near-zero F1 scores across the five entity types and often misclassified cybersecurity entities into the wrong label categories.
 
 ### Inter-Annotator Agreement
 IAA improved significantly after guideline refinement:
@@ -120,7 +120,7 @@ IAA improved significantly after guideline refinement:
 - **Batch 1 Cohen’s Kappa:** 0.748
 - **Batch 2 Cohen’s Kappa:** 0.891
 
-This showed that refining the annotation guidelines improved consistency and created stronger training data. :contentReference[oaicite:10]{index=10}
+This showed that refining the annotation guidelines improved consistency and created stronger training data.
 
 ### Final Custom Model Performance
 The final fine-tuned model showed large gains over the pretrained baseline.
@@ -131,7 +131,7 @@ The final fine-tuned model showed large gains over the pretrained baseline.
 - **System:** 0.568
 - **Organization:** 0.647
 - **Vulnerability:** 0.639
-- **Macro F1:** 0.681 :contentReference[oaicite:11]{index=11}
+- **Macro F1:** 0.681
 
 ### Cross-Domain Inference
 When applied to Twitter, the model did not generalize well as a general NER system. It tended to force Twitter entities into cybersecurity-specific categories, showing that the model was strongly domain-specific. This was actually a useful finding because it suggested the model learned cybersecurity patterns rather than broad entity behavior.
